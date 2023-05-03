@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -109,7 +110,18 @@ namespace TA8
 
         private void use_reservated_Click(object sender, RoutedEventArgs e)
         {
-            controller = new Controller(new SimpleTree(new List<int> { 9, 14, 12, 17, 23, 19, 50, 72, 54, 67, 76 }));
+            if (Simple.IsChecked == true)
+            {
+                controller = new Controller(new SimpleTree(new List<int> { 9, 14, 12, 17, 23, 19, 50, 72, 54, 67, 76 }));
+            }
+            if (Balanced.IsChecked == true)
+            {
+                controller = new Controller(new BalancedTree(new List<int> { 9, 14, 12, 17, 23, 19, 50, 72, 54, 67, 76 }));
+            }
+            if (RedBlack.IsChecked == true)
+            {
+                controller = new Controller(new RedAndBlackTree(new List<int> { 9, 14, 12, 17, 23, 19, 50, 72, 54, 67, 76 }));
+            }
             status.Content = "Created";
             status.Background = Brushes.Green;
             listcontrols.IsEnabled = false;
@@ -118,67 +130,82 @@ namespace TA8
 
         private void find_Click(object sender, RoutedEventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
             try
             {
+                sw.Start();
                 output.Text += controller.FindElement(element.Text) + "\n-------------------------------------------------------\n";
-
+                sw.Stop();
             }
             catch (Exception ex)
             {
-                status.Content = ex.Message;
+                sw.Stop();
+                status.Content = ex.Message + sw.Elapsed.TotalMilliseconds + " ms.";
                 status.Background = Brushes.Red;
                 return;
             }
-            status.Content = "Done";
+            status.Content = "Done: " + sw.Elapsed.TotalMilliseconds + " ms.";
             status.Background = Brushes.Green;
         }
 
         private void remove_Click(object sender, RoutedEventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
             try
             {
+                sw.Start();
                 controller.RemoveElement(element.Text);
+                sw.Stop();
             }
             catch (Exception ex)
             {
-                status.Content = ex.Message;
+                sw.Stop();
+                status.Content = ex.Message + sw.Elapsed.TotalMilliseconds + " ms.";
                 status.Background = Brushes.Red;
                 return;
             }
-            status.Content = "Done";
+            status.Content = "Done: " + sw.Elapsed.TotalMilliseconds + " ms.";
             status.Background = Brushes.Green;
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
             try
             {
+                sw.Start();
                 controller.AddElement(element.Text);
+                sw.Stop();
             }
             catch (Exception ex)
             {
-                status.Content = ex.Message;
+                sw.Stop();
+                status.Content = ex.Message + sw.Elapsed.TotalMilliseconds + " ms.";
                 status.Background = Brushes.Red;
                 return;
             }
-            status.Content = "Done";
+            status.Content = "Done: " + sw.Elapsed.TotalMilliseconds + " ms.";
             status.Background = Brushes.Green;
         }
 
         private void direction_Click(object sender, RoutedEventArgs e)
         {
+            Stopwatch sw = new Stopwatch();
             try
             {
+                sw.Start();
                 controller.GetDirection(element.Text).ForEach(x => output.Text += x + "-");
+                sw.Stop();
                 output.Text += "\n-------------------------------------------------------\n";
             }
             catch (Exception ex)
             {
-                status.Content = ex.Message;
+                sw.Stop();
+                status.Content = ex.Message + sw.Elapsed.TotalMilliseconds + " ms.";
                 status.Background = Brushes.Red;
                 return;
             }
-            status.Content = "Done";
+            status.Content = "Done: " + sw.Elapsed.TotalMilliseconds + " ms.";
             status.Background = Brushes.Green;
         }
 
