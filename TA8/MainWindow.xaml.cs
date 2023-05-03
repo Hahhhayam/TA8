@@ -76,7 +76,6 @@ namespace TA8
         {
             try
             {
-                int capacity = Int32.Parse(input_length.Text);
                 List<int> data = new List<int>();
                 foreach (string item in input.Text.Split('\n'))
                 {
