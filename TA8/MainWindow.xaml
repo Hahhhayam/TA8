@@ -34,7 +34,7 @@
             <RadioButton x:Name="Simple" Content="Simple" IsChecked="True" FontFamily="Century Gothic"/>
             <RadioButton x:Name="Balanced" Content="Balanced" FontFamily="Century Gothic"/>
             <RadioButton x:Name="RedBlack" Content="RedBlack" FontFamily="Century Gothic"/>
-            <TextBox x:Name="input" TextWrapping="Wrap" Text="1&#xD;&#xA;2&#xD;&#xA;3&#xD;&#xA;4" Height="100" Margin="0,5,0,0" FontFamily="Century Gothic"/>
+            <TextBox x:Name="input" TextWrapping="Wrap" Text="1&#xD;&#xA;2&#xD;&#xA;3&#xD;&#xA;4" Height="100" Margin="0,5,0,0" FontFamily="Century Gothic" AcceptsReturn="True"/>
             <TextBox x:Name="input_length" TextWrapping="Wrap" Text="Input length" Height="19"/>
             <Button x:Name="generate" Content="Generate" Margin="0,10,0,0" FontFamily="Century Gothic" Click="generate_Click"/>
             <Button x:Name="create" Content="Create" Margin="0,5,0,0" FontFamily="Century Gothic" Click="create_Click"/>
