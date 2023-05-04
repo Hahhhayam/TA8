@@ -79,7 +79,8 @@ namespace TA8
                 List<int> data = new List<int>();
                 foreach (string item in input.Text.Split('\n'))
                 {
-                    data.Add(int.Parse(item));
+                    if (!int.TryParse(item, out int val) || val < 1) { throw new Exception("list contains non-positive value"); }
+                    data.Add(val);
                 }
 
                 if (Simple.IsChecked == true)
