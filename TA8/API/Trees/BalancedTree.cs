@@ -34,6 +34,7 @@ namespace TA8.API.Trees
             Node node = new Node(sortedList[mid]);
             node.Left = BuildBalancedTreeRecursive(sortedList, start, mid - 1);
             node.Right = BuildBalancedTreeRecursive(sortedList, mid + 1, end);
+            FixHeight(node);
             return node;
         }
         public bool FindElement(int element)
